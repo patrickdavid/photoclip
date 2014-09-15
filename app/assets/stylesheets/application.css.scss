@@ -15,4 +15,11 @@
  *= require_self
  */
 
+@import "bootstrap-sprockets";
+@import "bootstrap";
 
+.navbar-default{
+  background: orange;
+}
+$light-orange: #ff8c00;
+$navbar-default-color: $light-orange;

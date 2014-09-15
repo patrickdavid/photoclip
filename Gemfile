@@ -10,6 +10,8 @@ gem 'turbolinks'
 gem 'bcrypt'
 gem "paperclip", "~> 4.2"
 gem 'bootstrap_form'
+gem 'bootstrap-sass'
+gem 'autoprefixer-rails'
 
 group :development do
   gem 'better_errors'
