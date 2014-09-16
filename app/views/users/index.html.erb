@@ -3,7 +3,7 @@
 
   <% @users.each do |user| %>
     <p><%= image_tag user.avatar.url(:thumb) %>
-     <a href ="user_path(user)"><%= user.email %></a>
+      <p><%= link_to user.email, user_path(user)%> </p>
     </p>
   <% end %>
 
