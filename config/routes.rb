@@ -2,19 +2,23 @@ Rails.application.routes.draw do
 
 
 
-  root :to => 'sessions#new'
+  root :to => 'photos#index'
 
   get 'signup', to: 'users#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
 
-  resources :photos
+  resources :photos, :except => [:new]
   resources :users
   resources :sessions
 
   resources :users do
     resources :photos
-end
+  end
+
+  resources :users do
+    resources :relationships
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

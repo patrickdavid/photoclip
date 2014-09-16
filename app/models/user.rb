@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
 
   has_secure_password
+  has_many :photos
   has_attached_file :avatar, :styles => {:thumb => 'x100', :croppable => '600x600>', :big => '1000x1000>'}
   has_attached_file :photo, :styles => {:thumb => 'x100', :croppable => '600x600>', :big => '1000x1000>'}
 
