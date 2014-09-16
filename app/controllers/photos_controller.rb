@@ -1,10 +1,9 @@
 class PhotosController < ApplicationController
-  before_filter :authorize, only: [:new, :edit, :update, :delete]
+  before_filter :authorize, only: [:new, :edit, :update, :delete,]
 
   def index
-    @user =current_user
     @photos = Photo.all
-    @my_photos = Photo.all where(@user)
+    @my_photos = current_user.photos
   end
 
   def new
@@ -12,10 +11,9 @@ class PhotosController < ApplicationController
   end
 
   def create
-    @user = current_user
     @photo = Photo.new()
-    if @photo.save
-      redirect_to 'index', notice: "Your Photo has been saved"
+    if current_user.photo.save
+      redirect_to photos_path, notice: "Your Photo has been saved"
     else
       render 'new'
     end

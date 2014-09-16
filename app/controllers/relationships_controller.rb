@@ -11,6 +11,7 @@ class RelationshipsController < ApplicationController
 
   def create
     @relationship = Relationship.new
+    @relationship.followed_by = current_user.id
     if @relationship.save
       redirect_to 'index', notice: "Your Relationship has been saved"
     else
