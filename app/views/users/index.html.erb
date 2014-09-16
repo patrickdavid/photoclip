@@ -1,0 +1,10 @@
+<div class="container">
+  <h1>ALL THE USERS</h1>
+
+  <% @users.each do |user| %>
+    <p><%= image_tag user.avatar.url(:thumb) %>
+     <a href ="user_path(user)"><%= user.email %></a>
+    </p>
+  <% end %>
+
+</div>
