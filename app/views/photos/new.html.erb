@@ -1,8 +1,15 @@
 <h1>YOUR PHOTO</h1>
+<div class="container"
 
 <%= render('layouts/errors', :object => @photo) %>
 
 <%= form_for(@photo, :url => user_photos_path, :html => { :multipart => true }) do |f| %>
   <%= f.file_field :photo %>
-  <%= f.submit "ADD Photo" %>
+  <br>
+  <%= f.label "Caption" %>
+  <%= f.text_field :caption %>
+  <br><br>
+  <%= f.submit "Add Photo" %>
 <% end %>
+
+</div>
