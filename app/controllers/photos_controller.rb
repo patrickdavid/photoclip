@@ -1,18 +1,19 @@
 class PhotosController < ApplicationController
-  before_filter :authorize, only: [:new, :edit, :update, :delete,]
+  before_filter :authorize
 
   def index
     @photos = Photo.all
-    @my_photos = current_user.photos
   end
 
   def new
-    @photo = Photo.new
+    @photo = current_user.photos.new
   end
 
   def create
-    @photo = Photo.new()
-    if current_user.photo.save
+    @user = current_user
+    @photo = Photo.new(photo_params)
+    current_user.photos << @photo
+    if @photo.save
       redirect_to photos_path, notice: "Your Photo has been saved"
     else
       render 'new'
@@ -20,10 +21,6 @@ class PhotosController < ApplicationController
   end
 
   def show
-    @photo = Photo.find(params[:id])
-  end
-
-  def edit
     @photo = Photo.find(params[:id])
   end
 
@@ -45,6 +42,6 @@ class PhotosController < ApplicationController
 
 private
   def photo_params
-    params.require(:photo).permit(:caption, :user_id)
+    params.require(:photo).permit(:caption, :user_id, :photo)
   end
 end
