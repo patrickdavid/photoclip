@@ -20,14 +20,21 @@ class PhotosController < ApplicationController
     end
   end
 
+  def edit
+    @user = current_user
+    @photo = Photo.find(params[:id])
+  end
+
+
   def show
     @user = current_user
     @photo = Photo.find(params[:id])
   end
 
   def update
-    @photo = Photo.find(photo_params)
-    if @photo.save
+    @user = current_user
+    @photo = Photo.find(params[:id])
+    if @photo.update(photo_params)
       redirect_to photo_path(@photo), notice: "Your Photo has been updated"
     else
       render 'edit'

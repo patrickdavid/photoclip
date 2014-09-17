@@ -1,0 +1,18 @@
+<h1>EDIT PHOTO</h1>
+<div class="container"
+
+<%= render('layouts/errors', :object => @photo) %>
+  <%= image_tag @photo.photo.url(:medium) %>
+
+<%= form_for(@photo, :html => { :multipart => true }) do |f| %>
+  <br>
+  <br>
+  <%= f.file_field :photo %>
+  <br>
+  <%= f.label "Caption" %>
+  <%= f.text_field :caption %>
+  <br><br>
+  <%= f.submit "update Photo" %>
+<% end %>
+
+</div>
