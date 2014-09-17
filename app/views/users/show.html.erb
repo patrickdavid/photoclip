@@ -22,6 +22,12 @@
 
   <div id = "photos" class="row">
     <div id="favorites" class="col-md-4">
+      <% Photo.all.each do |photo| %>
+        <% if photo.user_id == @user.id %>
+          <%= image_tag photo.photo.url(:medium) %>
+          <%= link_to photo.caption %>
+        <% end %>
+      <% end %>
 
     </div>
     <div id="tagged" class="col-md-4">
